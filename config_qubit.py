@@ -22,7 +22,7 @@ saturation_amp = 0.1
 square_pi_len = 120
 square_pi_amp = 0.125
 # Gaussian pulses
-gaussian_pulse = lambda amplitude, length, sigma : amplitude * np.exp(-(np.arange(length)-length/2)** 2/(2*sigma**2)) 
+gaussian_pulse = lambda amplitude, length, sigma : amplitude * np.exp(-(np.arange(length)-length/2)** 2/(2*sigma**2))
 rot_180_len = 248
 rot_180_sigma = rot_180_len / 5
 rot_180_amp = 0.125
@@ -57,7 +57,6 @@ depletion_time = 2 * u.us
 #                  Config                   #
 #############################################
 config = {
-    "version": 1,
     "controllers": {
         "con1": {
             "analog_outputs": {
@@ -81,7 +80,7 @@ config = {
                 'port': ('con1', 2),
                 'delay': 57,
                 'buffer': 18,
-               } 
+               }
             },
             "intermediate_frequency": qubit_IF,
             "operations": {
@@ -103,7 +102,7 @@ config = {
                 'port': ('con1', 1),
                 'delay': 57,
                 'buffer': 18,
-               } 
+               }
             },
             "intermediate_frequency": resonator_IF,
             "operations": {
@@ -115,7 +114,7 @@ config = {
         },
         "trigger": {
             "digitalInputs": { "trigger_in" : {"port": ("con1",3), "delay":0, "buffer":0 }},
-            "operations" : {"trigger":"trigger_pulse"},  
+            "operations" : {"trigger":"trigger_pulse"},
         },
     },
     "octaves": {
@@ -263,4 +262,3 @@ config = {
         },
     },
 }
-
