@@ -2,7 +2,53 @@ from IPython.display import display
 import ipywidgets as widgets
 import time
 from matplotlib import pyplot as plt
+import numpy as np
+import config_qubit as config
 
+phase_delay = 290e-9
+
+# Real time monitoring and plotting function
+def update(pp, n_avg, job, dfs, results, ax, l_modulous, l_phase):
+    while results.is_processing():
+        # Fetch results
+        I, Q, iteration = results.fetch_all()
+        theta = dfs*phase_delay*2*np.pi
+        Ir = 1e4*(np.cos(theta)*I-np.sin(theta)*Q)
+        Qr = 1e4*(np.sin(theta)*I+np.cos(theta)*Q)
+        S = Ir + 1j * Qr
+        R = 20*np.log10(np.abs(S))-25  # Amplitude
+        phase = np.unwrap(np.angle(S))*180/np.pi  # Phase
+        # Update plot
+        l_modulous.set_ydata(R)
+        rescale(ax[0],R)
+        l_phase.set_ydata(phase)
+        rescale(ax[1],phase)
+        # Progress bar
+        pp.update(iteration, n_avg)
+        # Stop if requested
+        if not pp.keeprunning:
+            break
+    job.halt()
+
+# Real time monitoring and plotting function
+def updateIQ(pp, n_avg, job, results, ax, l_I, l_Q):
+    while results.is_processing():
+        # Fetch results
+        I, Q, iteration = results.fetch_all()
+        # Update plot
+        theta = config.resonator_IF*phase_delay*2*np.pi # TOF correction
+        Ir = 1e4*(np.cos(theta)*I-np.sin(theta)*Q)
+        Qr = 1e4*(np.sin(theta)*I+np.cos(theta)*Q)
+        l_I.set_ydata(Ir)
+        rescale(ax[0], Ir)
+        l_Q.set_ydata(Qr)
+        rescale(ax[1], Qr)
+        # Progress bar
+        pp.update(iteration, n_avg)
+        # Stop if requested
+        if not pp.keeprunning:
+            break
+    job.halt()
 
 def addjob(qmprog, qm):
     # Send the QUA program to the OPX, which compiles and executes it

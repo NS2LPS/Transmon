@@ -9,14 +9,14 @@ u = unit(coerce_to_integer=True)
 #############################################
 #                  Qubit                    #
 #############################################
-qubit_LO = 3.669 * u.GHz #3.430
 qubit_IF = 50 * u.MHz
+qubit_LO = 3819.2* u.MHz - qubit_IF
 
 # Continuous wave
 const_len = 100
 const_amp = 0.1
 # Saturation_pulse
-saturation_len = 10 * u.us
+saturation_len = 20 * u.us
 saturation_amp = 0.1
 # Square pi pulse
 square_pi_len = 120
@@ -42,14 +42,14 @@ y90_Q_wf = gaussian_pulse(rot_90_amp, rot_90_len, rot_90_sigma)
 #############################################
 #                Resonators                 #
 #############################################
-resonator_LO = 5.8672 * u.GHz
 resonator_IF = 60 * u.MHz
+resonator_LO = 5929.3 *u.MHz - resonator_IF
 
-readout_len = 2500
-readout_delay = 80 # Skip the first points
+readout_len = 2800
+readout_delay = 800 # Skip the first points
 readout_amp = 0.125
 
-time_of_flight = 268 * u.ns
+time_of_flight = 256 * u.ns
 depletion_time = 2 * u.us
 
 
@@ -67,8 +67,8 @@ config = {
             },
             "digital_outputs": {1: {}, 2: {}, 3: {}},
             "analog_inputs": {
-                1: {"offset": 0.012341, "gain_db": 0},  # I from down-conversion
-                2: {"offset": 0.009397, "gain_db": 0},  # Q from down-conversion
+                1: {"offset": 0.012341 -0.002883, "gain_db": -3},  # I from down-conversion
+                2: {"offset": 0.009397 -0.002604, "gain_db": -3},  # Q from down-conversion
             },
         }
     },
