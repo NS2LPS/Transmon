@@ -14,13 +14,19 @@
             "mode_id": 1,
             "lo_freq": 5869300000,
             "gain": 0.0,
-            "latest": 1
+            "latest": 3
         },
         "2": {
             "mode_id": 2,
             "lo_freq": 3769200000,
             "gain": 6.0,
             "latest": 2
+        },
+        "3": {
+            "mode_id": 2,
+            "lo_freq": 3769250000,
+            "gain": 6.0,
+            "latest": 4
         }
     },
     "lo_cal": {
@@ -41,18 +47,41 @@
             "temperature": 57.75,
             "timestamp": 1759070644.4685977,
             "method": "auto"
+        },
+        "3": {
+            "i0": -0.010853346758420191,
+            "q0": -0.012288888570861052,
+            "dc_gain": -0.004441471953129494,
+            "dc_phase": 0.02517525064073862,
+            "temperature": 59.5,
+            "timestamp": 1759221649.793731,
+            "method": "auto"
+        },
+        "4": {
+            "i0": 0.0021845538224257175,
+            "q0": 0.009556278637819365,
+            "dc_gain": 0.020482529647879888,
+            "dc_phase": 0.022967956760663637,
+            "temperature": 57.875,
+            "timestamp": 1759221656.031157,
+            "method": "auto"
         }
     },
     "if_modes": {
         "1": {
             "lo_mode_id": 1,
             "if_freq": 60000000,
-            "latest": 1
+            "latest": 3
         },
         "2": {
             "lo_mode_id": 2,
             "if_freq": 50000000,
             "latest": 2
+        },
+        "3": {
+            "lo_mode_id": 3,
+            "if_freq": 50000000,
+            "latest": 4
         }
     },
     "if_cal": {
@@ -68,6 +97,20 @@
             "phase": 0.020081741099558185,
             "temperature": 57.75,
             "timestamp": 1759070644.5402982,
+            "method": "auto"
+        },
+        "3": {
+            "gain": 0.0,
+            "phase": 0.0,
+            "temperature": 59.5,
+            "timestamp": 1759221649.8906357,
+            "method": "auto"
+        },
+        "4": {
+            "gain": 0.01988448984020855,
+            "phase": 0.01899969622115079,
+            "temperature": 57.875,
+            "timestamp": 1759221656.1631927,
             "method": "auto"
         }
     }

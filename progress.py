@@ -50,6 +50,30 @@ def updateIQ(pp, n_avg, job, results, ax, l_I, l_Q):
             break
     job.halt()
 
+    
+def rot(I,Q):
+    theta = -292*np.pi/180
+    return I*np.cos(theta)-Q*np.sin(theta) , I*np.sin(theta)+Q*np.cos(theta)
+
+
+# Real time monitoring and plotting function
+def updatehist(pp, n_avg, job, results, ax, l_IQ0, l_IQ1):
+    while results.is_processing():
+        # Fetch results
+        I0, Q0, I1, Q1, iteration = results.fetch_all()
+        # Update plot
+        nm = min(len(I0),len(I1),len(Q0),len(Q1))
+        I0r, Q0r = rot(I0[:nm]*1e4,Q0[:nm]*1e4)
+        I1r, Q1r = rot(I1[:nm]*1e4,Q1[:nm]*1e4)
+        l_IQ0.set_data(I0r,Q0r)
+        l_IQ1.set_data(I1r,Q1r)
+        # Progress bar
+        pp.update(iteration, n_avg)
+        # Stop if requested
+        if not pp.keeprunning:
+            break
+    job.halt()    
+
 def addjob(qmprog, qm):
     # Send the QUA program to the OPX, which compiles and executes it
     job = qm.queue.add(qmprog)
