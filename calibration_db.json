@@ -14,7 +14,7 @@
             "mode_id": 1,
             "lo_freq": 5869300000,
             "gain": 0.0,
-            "latest": 3
+            "latest": 5
         },
         "2": {
             "mode_id": 2,
@@ -26,7 +26,7 @@
             "mode_id": 2,
             "lo_freq": 3769250000,
             "gain": 6.0,
-            "latest": 4
+            "latest": 6
         }
     },
     "lo_cal": {
@@ -65,13 +65,31 @@
             "temperature": 57.875,
             "timestamp": 1759221656.031157,
             "method": "auto"
+        },
+        "5": {
+            "i0": -0.010898476127520668,
+            "q0": -0.012310359290304534,
+            "dc_gain": -0.004865682713315889,
+            "dc_phase": 0.02628343061999159,
+            "temperature": 59.5625,
+            "timestamp": 1759348079.752098,
+            "method": "auto"
+        },
+        "6": {
+            "i0": 0.0021892053213818773,
+            "q0": 0.009643809104564709,
+            "dc_gain": 0.020637668283657096,
+            "dc_phase": 0.023460523217887965,
+            "temperature": 58.0625,
+            "timestamp": 1759348086.0960236,
+            "method": "auto"
         }
     },
     "if_modes": {
         "1": {
             "lo_mode_id": 1,
             "if_freq": 60000000,
-            "latest": 3
+            "latest": 5
         },
         "2": {
             "lo_mode_id": 2,
@@ -81,7 +99,7 @@
         "3": {
             "lo_mode_id": 3,
             "if_freq": 50000000,
-            "latest": 4
+            "latest": 6
         }
     },
     "if_cal": {
@@ -111,6 +129,20 @@
             "phase": 0.01899969622115079,
             "temperature": 57.875,
             "timestamp": 1759221656.1631927,
+            "method": "auto"
+        },
+        "5": {
+            "gain": 0.0,
+            "phase": 0.0,
+            "temperature": 59.5625,
+            "timestamp": 1759348079.8351915,
+            "method": "auto"
+        },
+        "6": {
+            "gain": 0.019817042154311116,
+            "phase": 0.01946461915026519,
+            "temperature": 58.0625,
+            "timestamp": 1759348086.3218896,
             "method": "auto"
         }
     }

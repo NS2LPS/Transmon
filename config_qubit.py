@@ -19,7 +19,7 @@ const_amp = 0.1
 saturation_len = 20 * u.us
 saturation_amp = 0.1
 # Square pi pulse
-square_pi_len = 120
+square_pi_len = 112 * u.ns
 square_pi_amp = 0.125
 # Gaussian pulses
 gaussian_pulse = lambda amplitude, length, sigma : amplitude * np.exp(-(np.arange(length)-length/2)** 2/(2*sigma**2))
@@ -45,8 +45,8 @@ y90_Q_wf = gaussian_pulse(rot_90_amp, rot_90_len, rot_90_sigma)
 resonator_IF = 60 * u.MHz
 resonator_LO = 5929.3 *u.MHz - resonator_IF
 
-readout_len = 2200
-readout_delay = 200 # Skip the first points
+readout_len = 2000
+readout_delay = 0 # Skip the first points
 readout_amp = 0.1
 
 time_of_flight = 256 * u.ns
